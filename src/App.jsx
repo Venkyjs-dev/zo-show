@@ -1,7 +1,13 @@
-import "./App.css";
+import { Outlet } from "react-router-dom";
+import Navbar from "./components/Navbar";
 
-function App() {
-  return <h1 class="text-3xl font-bold underline">Hello zo-show!</h1>;
+export default function App() {
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <Navbar />
+      <main className="p-6">
+        <Outlet /> {/* child routes render here */}
+      </main>
+    </div>
+  );
 }
-
-export default App;

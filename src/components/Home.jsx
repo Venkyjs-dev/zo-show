@@ -1,6 +1,7 @@
 import Header from "./Header";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import Body from "./Body";
 function Home() {
   return (
     <div className="h-[100vh] bg-cover bg-center bg-[url('https://images.unsplash.com/photo-1506744038136-46273834b3fb')]">
@@ -17,6 +18,7 @@ function Home() {
           Get Started
         </button>
       </div>
+      <Body />
       <Footer />
     </div>
   );

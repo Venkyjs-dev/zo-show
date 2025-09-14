@@ -1,5 +1,5 @@
 import App from "../App";
-import Home from "../pages/Home";
+import Home from "../components/Home";
 import About from "../pages/About";
 import ErrorPage from "./ErrorPage";
 

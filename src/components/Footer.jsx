@@ -106,7 +106,7 @@ function Footer() {
           </ul>
           <div>
             <h1 className="font-bold text-2xl text-white">
-              Sign Up for Our Newsletter
+              Sign Up for Our Newsletters
             </h1>
             <input
               type="email"

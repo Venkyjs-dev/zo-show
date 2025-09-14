@@ -7,7 +7,7 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 
 function Header() {
   return (
-    <div className="flex justify-between ml-[15%] mr-[15%] p-[2%]">
+    <div className="hidden lg:flex justify-between ml-[15%] mr-[15%] p-[2%] relative">
       <p className="flex flex-row justify-center">
         <MdOutlineEmail className="text-blue-600 text-3xl  mx-[5px]" />
         <span className="">ask zo-show.com</span>

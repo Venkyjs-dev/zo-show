@@ -1,8 +1,9 @@
 import Header from "./Header";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 function Home() {
   return (
-    <div className="h-screen bg-cover bg-center bg-[url('https://images.unsplash.com/photo-1506744038136-46273834b3fb')]">
+    <div className="h-[100vh] bg-cover bg-center bg-[url('https://images.unsplash.com/photo-1506744038136-46273834b3fb')]">
       <Header />
       <Navbar />
       <div className="flex flex-col justify-center items-center font-bold mt-[10%]">
@@ -16,6 +17,7 @@ function Home() {
           Get Started
         </button>
       </div>
+      <Footer />
     </div>
   );
 }

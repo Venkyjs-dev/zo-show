@@ -1,122 +1,150 @@
-function Footer() {
+import { useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
+
+export default function Footer() {
+  const footerRef = useRef(null);
+
+  // Animate footer fade-in on scroll
+  useGSAP(
+    () => {
+      gsap.fromTo(
+        footerRef.current,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: footerRef.current,
+            start: "top 80%",
+          },
+        }
+      );
+    },
+    { scope: footerRef }
+  );
+
   return (
-    <div className="bg-blue-950 text-white p-4 lg:px-[5%] pt-[5%] relative">
-      <div className="flex-col lg:flex flex-row justify-between">
-        <div className="w-full lg:w-[45%]">
-          <h1 className="text-5xl font-bold my-2">
-            Let's get your brand to the big screens !
+    <footer
+      ref={footerRef}
+      className="bg-blue-950 text-white px-4 py-8 lg:px-[5%] lg:py-12 font-sans">
+      <div className="flex flex-col lg:flex-row justify-between gap-10">
+        {/* Left Section */}
+        <div className="lg:w-[45%]">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4">
+            Let's get your brand to the big screens!
           </h1>
-          <p className="text-gray-400 text-[18px] my-2">
-            To lead your brand with India's premier Digital Screen Network? Get
-            in touch with our team of experts to start your urban advertising
-            journey.
+          <p className="text-gray-300 text-base md:text-lg mb-6">
+            Lead your brand with India's premier Digital Screen Network. Get in
+            touch with our experts to start your urban advertising journey.
           </p>
-          <div>hello</div>
-        </div>
-        <div className="w-[100%] lg:w-[50%]">
-          <form className=" my-4">
-            <div className="flex">
-              <div className="my-2 w-[50%]">
-                <label htmlFor="name">Full Name*</label>
-                <br />
-                <input
-                  className="bg-blue-500 text-block p-2 rounded w-[100%]"
-                  id="name"
-                  type="text"
-                  placeholder="eg. Oliver Sharma"
-                />
-              </div>
-              <div className="my-2 mx-4 w-[50%]">
-                <label htmlFor="email">Email*</label>
-                <br />
-                <input
-                  className="bg-blue-500 text-block p-2 rounded w-[100%]"
-                  id="email"
-                  type="email"
-                  placeholder="Enter your email"
-                />
-              </div>
+
+          {/* Contact Form */}
+          <form className="space-y-4">
+            <div className="flex flex-col md:flex-row gap-4">
+              <input
+                type="text"
+                placeholder="Full Name*"
+                className="w-full md:w-1/2 p-2 rounded bg-blue-700/80 placeholder-gray-200
+                           focus:outline-none focus:ring-2 focus:ring-green-500"
+              />
+              <input
+                type="email"
+                placeholder="Email*"
+                className="w-full md:w-1/2 p-2 rounded bg-blue-700/80 placeholder-gray-200
+                           focus:outline-none focus:ring-2 focus:ring-green-500"
+              />
             </div>
-            <div className="flex">
-              <div className="my-2 w-[50%]">
-                <label htmlFor="number">Phone Number*</label>
-                <br />
-                <input
-                  className="bg-blue-500 text-block p-2 rounded w-[100%]"
-                  id="number"
-                  type="number"
-                  placeholder="eg. 9898989898"
-                />
-              </div>
-              <div className="my-2 mx-4 w-[50%]">
-                <label htmlFor="city">City*</label>
-                <br />
-                <input
-                  className="bg-blue-500 text-block p-2 rounded w-[100%]"
-                  id="city"
-                  placeholder="eg. Mumbai"
-                />
-              </div>
+            <div className="flex flex-col md:flex-row gap-4">
+              <input
+                type="tel"
+                placeholder="Phone Number*"
+                className="w-full md:w-1/2 p-2 rounded bg-blue-700/80 placeholder-gray-200
+                           focus:outline-none focus:ring-2 focus:ring-green-500"
+              />
+              <input
+                type="text"
+                placeholder="City*"
+                className="w-full md:w-1/2 p-2 rounded bg-blue-700/80 placeholder-gray-200
+                           focus:outline-none focus:ring-2 focus:ring-green-500"
+              />
             </div>
-            <div className="my-2 ">
-              <label htmlFor="features">What describes you best?*</label>
-              <br />
-              <select
-                className="bg-blue-500 text-block p-2 rounded w-[100%]"
-                id="features"
-              >
-                <option>--- Select ---</option>
-                <option>Brand</option>
-                <option>Agency</option>
-                <option>Others</option>
-              </select>
-            </div>
-            <div className="my-2 w-[100%]">
-              <label htmlFor="comments">Comments*</label>
-              <br />
-              <textarea
-                className="bg-blue-500 text-block p-2 rounded w-[100%]"
-                id="comments"
-              ></textarea>
-            </div>
-            <div>
-              <button className="text-white bg-blue-400 px-4 py-2 w-[5rem] rounded font-bold">
-                Send
-              </button>
-            </div>
+            <select
+              className="w-full p-2 rounded bg-blue-700/80 placeholder-gray-200
+                         focus:outline-none focus:ring-2 focus:ring-green-500">
+              <option>--- Select ---</option>
+              <option>Brand</option>
+              <option>Agency</option>
+              <option>Others</option>
+            </select>
+            <textarea
+              placeholder="Comments*"
+              className="w-full p-2 rounded bg-blue-700/80 placeholder-gray-200
+                         focus:outline-none focus:ring-2 focus:ring-green-500"
+            />
+            <button
+              className="bg-green-600 hover:bg-green-500 transition-colors duration-300
+                         px-6 py-3 rounded font-bold">
+              Send
+            </button>
           </form>
         </div>
-      </div>
-      <hr />
-      <div className="text-gray-400 my-4">
-        <div className="flex flex-wrap lg:justify-between ">
-          <div>
-            <h1 className="font-bold text-2xl text-white">zo-show</h1>
-            <p>Your Digital Screen Network partner</p>
+
+        {/* Right Section */}
+        <div className="lg:w-[50%] flex flex-col gap-8">
+          {/* Quick Links */}
+          <div className="flex flex-col sm:flex-row justify-between gap-8 text-gray-200">
+            <div>
+              <h2 className="font-bold text-xl mb-2">Zo-Show</h2>
+              <p>Your Digital Screen Network partner</p>
+            </div>
+            <ul className="space-y-1">
+              <li className="hover:text-green-500 cursor-pointer">Home</li>
+              <li className="hover:text-green-500 cursor-pointer">About Us</li>
+              <li className="hover:text-green-500 cursor-pointer">
+                Our Products
+              </li>
+            </ul>
+            <ul className="space-y-1">
+              <li className="hover:text-green-500 cursor-pointer">Career</li>
+              <li className="hover:text-green-500 cursor-pointer">Culture</li>
+              <li className="hover:text-green-500 cursor-pointer">
+                Contact Us
+              </li>
+            </ul>
           </div>
-          <ul className="font-bold my-2 lg:my-0">
-            <li>Home</li>
-            <li>About us</li>
-            <li>Our Products</li>
-          </ul>
-          <ul className="font-bold my-2 mx-2 lg:my-0 mx-0">
-            <li>Career</li>
-            <li>Culture</li>
-            <li>Contact Us</li>
-          </ul>
+
+          {/* Newsletter Signup */}
           <div>
-            <h1 className="font-bold text-2xl text-white">
-              Sign Up for Our Newsletters
-            </h1>
+            <h2 className="font-bold text-xl mb-2">
+              Sign Up for Our Newsletter
+            </h2>
             <input
               type="email"
               placeholder="Enter your email"
-              className="bg-transparent border-[1px] border-white my-2 rounded p-2"
+              className="w-full p-2 rounded bg-transparent border border-gray-400
+                         placeholder-gray-200 focus:outline-none
+                         focus:ring-2 focus:ring-green-500"
             />
+            <button
+              className="mt-3 bg-green-600 hover:bg-green-500 transition-colors duration-300
+                         px-6 py-3 rounded font-bold">
+              Subscribe
+            </button>
           </div>
         </div>
       </div>
-    </div>
+
+      <hr className="my-8 border-gray-700" />
+
+      <div className="text-gray-400 text-sm text-center lg:text-left">
+        &copy; {new Date().getFullYear()} Zo-Show. All rights reserved.
+      </div>
+    </footer>
   );
 }
-export default Footer;

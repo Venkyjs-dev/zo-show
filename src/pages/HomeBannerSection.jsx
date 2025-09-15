@@ -1,29 +1,28 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
-export default function ContactBannerSection() {
+export default function HomeBannerSection() {
   const headingRef = useRef(null);
   const subTextRef = useRef(null);
   const btnRef = useRef(null);
 
   useEffect(() => {
-    // Utility to wrap each character in a span for animation
-    const splitChars = (el) => {
-      const text = el.textContent;
-      el.textContent = "";
+    // Split text into <span> characters
+    const splitChars = (element) => {
+      const text = element.textContent;
+      element.textContent = "";
       text.split("").forEach((char) => {
         const span = document.createElement("span");
         span.textContent = char;
         span.style.display = "inline-block";
-        el.appendChild(span);
+        element.appendChild(span);
       });
-      return el.querySelectorAll("span");
+      return element.querySelectorAll("span");
     };
 
     const headingChars = splitChars(headingRef.current);
     const subChars = splitChars(subTextRef.current);
 
-    // Timeline: staggered character fade/slide + button reveal
     const tl = gsap.timeline();
     tl.from(headingChars, {
       opacity: 0,
@@ -58,7 +57,7 @@ export default function ContactBannerSection() {
         backgroundImage:
           "url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80')",
       }}>
-      {/* dark overlay to enhance contrast */}
+      {/* Overlay for better contrast */}
       <div className="absolute inset-0 bg-black/40"></div>
 
       <div className="relative z-10 max-w-3xl">
@@ -71,7 +70,7 @@ export default function ContactBannerSection() {
         <h1
           ref={headingRef}
           className="text-white font-extrabold text-3xl sm:text-5xl md:text-6xl leading-tight mb-6">
-          Contact Us Banner Section
+          Home Banner Section
         </h1>
 
         <button

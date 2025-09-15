@@ -1,23 +1,65 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 export default function Navbar() {
-  const linkClass = ({ isActive }) =>
-    isActive ? "text-blue-600 font-bold" : "text-gray-700";
+  const [open, setOpen] = useState(false);
 
   return (
-    <nav className="flex gap-4 bg-white shadow p-4">
-      <NavLink to="/" className={linkClass}>
-        Home
-      </NavLink>
-      <NavLink to="/about" className={linkClass}>
-        About
-      </NavLink>
-      <NavLink to="/contact" className={linkClass}>
-        Contact
-      </NavLink>
-      <NavLink to="/dashboard" className={linkClass}>
-        Dashboard
-      </NavLink>
+    <nav className="flex justify-between items-center bg-amber-50 px-4 py-3 md:mx-[10%] lg:mx-[15%] rounded shadow">
+      {/* Logo */}
+      <h1 className="text-xl font-bold">Zo-Show</h1>
+
+      {/* Desktop Menu */}
+      <ul className="hidden md:flex space-x-6">
+        <li>
+          <NavLink to="/">Home</NavLink>
+        </li>
+        <li>
+          <NavLink to="/about">About Us</NavLink>
+        </li>
+        <li>
+          <NavLink to="/products">Our Products</NavLink>
+        </li>
+        <li>
+          <NavLink to="/career">Career</NavLink>
+        </li>
+        <li>
+          <NavLink to="/culture">Culture</NavLink>
+        </li>
+        <li>
+          <NavLink to="/contact">Contact</NavLink>
+        </li>
+      </ul>
+
+      {/* Mobile Hamburger */}
+      <button className="md:hidden" onClick={() => setOpen(!open)}>
+        {open ? <FaTimes size={24} /> : <FaBars size={24} />}
+      </button>
+
+      {/* Mobile Menu */}
+      {open && (
+        <ul className="font-bold absolute top-14 left-0 w-full bg-white flex flex-col px-2 space-y-4 py-4 md:hidden ">
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/about">About</NavLink>
+          </li>
+          <li>
+            <NavLink to="/products">Our Products</NavLink>
+          </li>
+          <li>
+            <NavLink to="/career">Career</NavLink>
+          </li>
+          <li>
+            <NavLink to="/culture">Culture</NavLink>
+          </li>
+          <li>
+            <NavLink to="/contact">Contact</NavLink>
+          </li>
+        </ul>
+      )}
     </nav>
   );
 }

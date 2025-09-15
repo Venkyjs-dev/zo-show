@@ -7,10 +7,8 @@ export default function Navbar() {
 
   return (
     <nav className="flex justify-between items-center bg-amber-50 px-4 py-3 md:mx-[10%] lg:mx-[15%] rounded shadow">
-      {/* Logo */}
       <h1 className="text-xl font-bold">Zo-Show</h1>
 
-      {/* Desktop Menu */}
       <ul className="hidden md:flex space-x-6">
         <li>
           <NavLink to="/">Home</NavLink>
@@ -21,23 +19,16 @@ export default function Navbar() {
         <li>
           <NavLink to="/products">Our Products</NavLink>
         </li>
-        <li>
-          <NavLink to="/career">Career</NavLink>
-        </li>
-        <li>
-          <NavLink to="/culture">Culture</NavLink>
-        </li>
+
         <li>
           <NavLink to="/contact">Contact</NavLink>
         </li>
       </ul>
 
-      {/* Mobile Hamburger */}
       <button className="md:hidden" onClick={() => setOpen(!open)}>
         {open ? <FaTimes size={24} /> : <FaBars size={24} />}
       </button>
 
-      {/* Mobile Menu */}
       {open && (
         <ul className="font-bold absolute top-14 left-0 w-full bg-white flex flex-col px-2 space-y-4 py-4 md:hidden ">
           <li>
@@ -49,12 +40,7 @@ export default function Navbar() {
           <li>
             <NavLink to="/products">Our Products</NavLink>
           </li>
-          <li>
-            <NavLink to="/career">Career</NavLink>
-          </li>
-          <li>
-            <NavLink to="/culture">Culture</NavLink>
-          </li>
+
           <li>
             <NavLink to="/contact">Contact</NavLink>
           </li>

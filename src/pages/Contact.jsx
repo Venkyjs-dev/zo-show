@@ -1,11 +1,11 @@
-import AboutBannerSection from "./AboutBannerSection";
-export default function About() {
+import ContactBannerSection from "./ContactBannerSection";
+function Contact() {
   return (
-    <>
-      <AboutBannerSection />
+    <div>
+      <ContactBannerSection />
       <section className="flex flex-col items-center justify-center min-h-[80vh] text-center px-4">
         <h1 className="text-4xl md:text-5xl font-extrabold text-green-600 mb-4">
-          About Us 🌿
+          Contact Us 🌿
         </h1>
         <p className="text-lg md:text-xl text-gray-700 max-w-2xl">
           We are a passionate team building modern web applications using React
@@ -13,6 +13,7 @@ export default function About() {
           performant solutions.
         </p>
       </section>
-    </>
+    </div>
   );
 }
+export default Contact;

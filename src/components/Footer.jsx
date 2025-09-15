@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <div className="bg-blue-950 text-white p-4 lg:p-[10%]">
+    <div className="bg-blue-950 text-white p-4 lg:px-[5%] pt-[5%] relative">
       <div className="flex-col lg:flex flex-row justify-between">
         <div className="w-full lg:w-[45%]">
           <h1 className="text-5xl font-bold my-2">
@@ -110,7 +110,7 @@ function Footer() {
             </h1>
             <input
               type="email"
-              placeholder="email"
+              placeholder="Enter your email"
               className="bg-transparent border-[1px] border-white my-2 rounded p-2"
             />
           </div>
